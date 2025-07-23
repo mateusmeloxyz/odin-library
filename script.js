@@ -40,3 +40,15 @@ for (const book of myLibrary) {
   bookElement.textContent = book.info();
   booksDisplay.appendChild(bookElement);
 }
+
+const addBookModal = document.getElementById("add-book-modal");
+const addBookConfirm = document.getElementById("add-book-confirm");
+const addBookShowModal = document.getElementById("add-book-show-modal");
+
+addBookShowModal.addEventListener("click", () => {
+  addBookModal.showModal();
+});
+
+addBookConfirm.addEventListener("click", () => {
+  addBookModal.close();
+});
