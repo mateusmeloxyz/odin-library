@@ -26,11 +26,11 @@ addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
 
-function displayBooks(library) {
+function logBooks(library) {
   library.forEach((book) => console.log(book.info()));
 }
 
-displayBooks(myLibrary);
+logBooks(myLibrary);
 
 const booksDisplay = document.getElementById("books-display");
 
