@@ -54,7 +54,7 @@ function refreshBooksDisplay() {
     bookElement.textContent = book.info();
     const deleteBookButton = document.createElement("button");
     deleteBookButton.textContent = "🗑️";
-    deleteBookButton.setAttribute("id", bookElement.id);
+    deleteBookButton.setAttribute("id", book.id);
     deleteBookButton.addEventListener("click", (event) => {
       deleteBookFromLibrary(event.target.id);
       refreshBooksDisplay();
