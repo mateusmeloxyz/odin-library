@@ -14,12 +14,22 @@ function Book(title, author, pages, read) {
   };
 }
 
+function getBookFromLibrary(bookId) {
+  const index = myLibrary.findIndex((book) => book.id === bookId);
+  return myLibrary[index];
+}
+
+function getBookIndexFromLibrary(bookId) {
+  const index = myLibrary.findIndex((book) => book.id === bookId);
+  return index;
+}
+
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
 function deleteBookFromLibrary(bookId) {
-  const index = myLibrary.findIndex((book) => book.id === bookId);
+  const index = getBookIndexFromLibrary(bookId);
   myLibrary.splice(index, 1);
 }
 
