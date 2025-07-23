@@ -11,11 +11,45 @@
     <h1>Library</h1>
     <button id="add-book-show-modal">Add book</button>
     <dialog id="add-book-modal">
-      <p>This modal will contain the add book form</p>
-      <button id="add-book-confirm">Add</button>
+      <form method="post">
+        <h2>Add book form</h2>
+        <p>
+          Required fields are followed by
+          <strong><span aria-label="required">*</span></strong
+          >.
+        </p>
+        <fieldset>
+          <label for="title">
+            Title:
+            <input
+              name="submitted-title"
+              autocomplete="title"
+              type="text"
+              id="title"
+            />
+          </label>
+          <label for="author">
+            Author:
+            <input
+              name="submitted-author"
+              autocomplete="author"
+              type="text"
+              id="author"
+            />
+          </label>
+          <label for="pages">
+            Pages:
+            <input name="submitted-pages" type="number" id="pages" />
+          </label>
+          <label for="read">
+            Read?
+            <input name="submitted-read" type="checkbox" id="read" />
+          </label>
+          <button id="add-book-confirm">Add</button>
+        </fieldset>
+      </form>
     </dialog>
     <div id="books-display"></div>
-
     <script src="script.js"></script>
   </body>
 </html>

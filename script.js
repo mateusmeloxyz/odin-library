@@ -22,8 +22,6 @@ const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 const book2 = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1178, true);
 const book3 = new Book("The Silmarillion", "J.R.R. Tolkien", 365, false);
 
-console.log(book1.info());
-console.log(book2.info());
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
@@ -35,11 +33,17 @@ function displayBooks(library) {
 displayBooks(myLibrary);
 
 const booksDisplay = document.getElementById("books-display");
-for (const book of myLibrary) {
-  const bookElement = document.createElement("div");
-  bookElement.textContent = book.info();
-  booksDisplay.appendChild(bookElement);
+
+function refreshBooksDisplay() {
+  booksDisplay.innerHTML = "";
+  for (const book of myLibrary) {
+    const bookElement = document.createElement("div");
+    bookElement.textContent = book.info();
+    booksDisplay.appendChild(bookElement);
+  }
 }
+
+refreshBooksDisplay();
 
 const addBookModal = document.getElementById("add-book-modal");
 const addBookConfirm = document.getElementById("add-book-confirm");
@@ -49,6 +53,15 @@ addBookShowModal.addEventListener("click", () => {
   addBookModal.showModal();
 });
 
-addBookConfirm.addEventListener("click", () => {
+addBookConfirm.addEventListener("click", (event) => {
+  event.preventDefault();
+  const newBook = new Book(
+    event.target.form.elements.title.value,
+    event.target.form.elements.author.value,
+    event.target.form.elements.pages.value,
+    event.target.form.elements.read.checked,
+  );
+  addBookToLibrary(newBook);
+  refreshBooksDisplay();
   addBookModal.close();
 });
