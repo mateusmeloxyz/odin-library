@@ -18,6 +18,11 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+function deleteBookFromLibrary(bookId) {
+  const index = myLibrary.findIndex((book) => book.id === bookId);
+  myLibrary.splice(index, 1);
+}
+
 const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 const book2 = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1178, true);
 const book3 = new Book("The Silmarillion", "J.R.R. Tolkien", 365, false);
@@ -25,6 +30,7 @@ const book3 = new Book("The Silmarillion", "J.R.R. Tolkien", 365, false);
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
+deleteBookFromLibrary(book3.id);
 
 function logBooks(library) {
   library.forEach((book) => console.log(book.info()));
@@ -39,6 +45,14 @@ function refreshBooksDisplay() {
   for (const book of myLibrary) {
     const bookElement = document.createElement("div");
     bookElement.textContent = book.info();
+    const deleteBookButton = document.createElement("button");
+    deleteBookButton.textContent = "🗑️";
+    deleteBookButton.setAttribute("id", bookElement.id);
+    deleteBookButton.addEventListener("click", (event) => {
+      deleteBookFromLibrary(event.target.id);
+      refreshBooksDisplay();
+    });
+    bookElement.appendChild(deleteBookButton);
     booksDisplay.appendChild(bookElement);
   }
 }
