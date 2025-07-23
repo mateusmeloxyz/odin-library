@@ -23,14 +23,11 @@ function deleteBookFromLibrary(bookId) {
   myLibrary.splice(index, 1);
 }
 
-const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
-const book2 = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1178, true);
-const book3 = new Book("The Silmarillion", "J.R.R. Tolkien", 365, false);
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-deleteBookFromLibrary(book3.id);
+addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", 295, false));
+addBookToLibrary(
+  new Book("The Lord of the Rings", "J.R.R. Tolkien", 1178, true),
+);
+addBookToLibrary(new Book("The Silmarillion", "J.R.R. Tolkien", 365, false));
 
 function logBooks(library) {
   library.forEach((book) => console.log(book.info()));
