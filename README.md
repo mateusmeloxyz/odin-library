@@ -14,6 +14,10 @@ It includes:
 
 Check out [here]()
 
+## Project Specifications on TOP Curriculum
+
+[https://www.theodinproject.com/lessons/node-path-javascript-library](https://www.theodinproject.com/lessons/node-path-javascript-library)
+
 ## TODO
 
 - [ ] Style with CSS
