@@ -12,6 +12,9 @@ function Book(title, author, pages, read) {
   this.info = function () {
     return `${this.title} by ${this.author}, ${pages} pages, ${this.read ? "read" : "not read yet"}`;
   };
+  this.changeReadStatus = function () {
+    this.read = !this.read;
+  };
 }
 
 function getBookFromLibrary(bookId) {
@@ -59,7 +62,18 @@ function refreshBooksDisplay() {
       deleteBookFromLibrary(event.target.id);
       refreshBooksDisplay();
     });
+    const changeReadButton = document.createElement("button");
+    changeReadButton.textContent = book.read
+      ? "Mark as 'not read yet'"
+      : "Mark as 'read'";
+    changeReadButton.setAttribute("id", book.id);
+    changeReadButton.addEventListener("click", (event) => {
+      const curBook = getBookFromLibrary(event.target.id);
+      curBook.changeReadStatus();
+      refreshBooksDisplay();
+    });
     bookElement.appendChild(deleteBookButton);
+    bookElement.appendChild(changeReadButton);
     booksDisplay.appendChild(bookElement);
   }
 }
